@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Mahasiswa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2ff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 500px;
+            margin: 60px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+        h1 {
+            text-align: center;
+            color: #1d4ed8;
+            margin-top: 0;
+        }
+        p {
+            text-align: center;
+            color: #475569;
+        }
+        label {
+            display: block;
+            margin-top: 14px;
+            font-weight: bold;
+            color: #1e293b;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+        .actions {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        button, a {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        button {
+            background: #2563eb;
+            color: white;
+        }
+        a {
+            background: #94a3b8;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Form Input Mahasiswa</h1>
+    <p>Website Tasnim - 20230140240</p>
+
+    <form th:action="@{/save}" th:object="${user}" method="post">
+        <label>Nama</label>
+        <input type="text" th:field="*{nama}" placeholder="Masukkan nama" required>
+
+        <label>NIM</label>
+        <input type="text" th:field="*{nim}" placeholder="Masukkan NIM" required>
+
+        <label>Jenis Kelamin</label>
+        <select th:field="*{jenisKelamin}" required>
+            <option value="">-- Pilih Jenis Kelamin --</option>
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+        </select>
+
+        <div class="actions">
+            <button type="submit">Simpan</button>
+            <a th:href="@{/home}">Kembali</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
