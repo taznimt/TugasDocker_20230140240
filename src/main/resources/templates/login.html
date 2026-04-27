@@ -5,78 +5,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Website Tasnim</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            color: #fff;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8c8dc, #e9d5ff, #d8b4fe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
         .container {
-            width: 400px;
-            margin: 80px auto;
-            background: #ffffff;
-            color: #1e293b;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            width: 430px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(6px);
+            padding: 32px;
+            border-radius: 28px;
+            box-shadow: 0 14px 35px rgba(186, 104, 200, 0.25);
+            border: 2px solid #f5d0fe;
         }
+
+        .foto-login {
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 16px auto;
+            border: 5px solid #f9a8d4;
+            box-shadow: 0 8px 18px rgba(244, 114, 182, 0.25);
+        }
+
         h1 {
-            margin-top: 0;
+            margin: 0;
             text-align: center;
-            color: #1d4ed8;
+            color: #a21caf;
+            font-size: 30px;
         }
-        p {
+
+        .sub {
             text-align: center;
-            color: #475569;
+            color: #7e22ce;
+            margin-top: 8px;
+            margin-bottom: 16px;
+            font-size: 15px;
         }
+
+        .kata-hari-ini {
+            background: linear-gradient(135deg, #fdf2f8, #f3e8ff);
+            color: #9333ea;
+            border: 2px dashed #f9a8d4;
+            padding: 14px;
+            border-radius: 18px;
+            margin: 18px 0;
+            text-align: center;
+            font-style: italic;
+            font-size: 14px;
+        }
+
         label {
             display: block;
             margin-top: 14px;
+            margin-bottom: 6px;
             font-weight: bold;
+            color: #7e22ce;
         }
+
         input {
             width: 100%;
-            padding: 12px;
-            margin-top: 6px;
-            border: 1px solid #cbd5e1;
-            border-radius: 10px;
-            box-sizing: border-box;
+            padding: 13px;
+            border: 2px solid #e9d5ff;
+            border-radius: 14px;
+            outline: none;
+            background: #fff;
         }
+
+        input:focus {
+            border-color: #f472b6;
+            box-shadow: 0 0 0 4px rgba(244, 114, 182, 0.12);
+        }
+
         button {
             width: 100%;
-            margin-top: 18px;
-            padding: 12px;
+            margin-top: 20px;
+            padding: 13px;
             border: none;
-            border-radius: 10px;
-            background: #2563eb;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #f472b6, #c084fc);
             color: white;
             font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
+            box-shadow: 0 8px 18px rgba(244, 114, 182, 0.25);
         }
+
         button:hover {
-            background: #1d4ed8;
+            opacity: 0.95;
+            transform: translateY(-1px);
         }
+
         .error {
-            background: #fee2e2;
-            color: #b91c1c;
-            padding: 10px;
-            border-radius: 10px;
+            background: #ffe4e6;
+            color: #be123c;
+            padding: 11px;
+            border-radius: 14px;
             margin-top: 12px;
             text-align: center;
+            border: 1px solid #fda4af;
         }
+
         .badge {
-            margin-top: 14px;
+            margin-top: 16px;
             text-align: center;
+            color: #9333ea;
             font-size: 13px;
-            color: #64748b;
+        }
+
+        .cute {
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 8px;
         }
     </style>
 </head>
 <body>
 <div class="container">
+    <div class="cute">🌸🩷✨</div>
+
+    <!-- JANGAN LUPA TAMBAHKAN FOTO DI FOLDER static/img -->
+    <img th:src="@{/img/foto-login.jpg}" alt="Foto Login" class="foto-login">
+
     <h1>Login Page</h1>
-    <p>Website Tasnim - NIM 20230140240</p>
+    <div class="sub">Website Tasnim yang lucu dan manis 💕</div>
+
+    <div class="kata-hari-ini" th:text="${kataHariIni}">
+        Kata-kata hari ini
+    </div>
 
     <div th:if="${error}" class="error" th:text="${error}"></div>
 
@@ -87,12 +156,10 @@
         <label>Password</label>
         <input type="password" name="password" placeholder="Masukkan password" required>
 
-        <button type="submit">Login</button>
+        <button type="submit">Login 💜</button>
     </form>
 
-    <div class="badge">
-        Username: admin | Password: 20230140240
-    </div>
+
 </div>
 </body>
 </html>

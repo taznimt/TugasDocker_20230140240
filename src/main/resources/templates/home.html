@@ -5,79 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Website Tasnim</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background: #f8fafc;
+            background: linear-gradient(135deg, #fdf2f8, #f3e8ff, #fae8ff);
             margin: 0;
             padding: 0;
-            color: #0f172a;
+            color: #4c1d95;
         }
+
         .header {
-            background: #0f172a;
+            background: linear-gradient(135deg, #f472b6, #c084fc);
             color: white;
-            padding: 24px 40px;
+            padding: 28px 40px;
+            box-shadow: 0 8px 20px rgba(192, 132, 252, 0.22);
         }
+
         .header h1 {
             margin: 0;
         }
+
         .header p {
-            margin: 6px 0 0;
-            color: #cbd5e1;
+            margin: 8px 0 0;
+            color: #fdf4ff;
         }
+
         .container {
             padding: 30px 40px;
         }
+
         .nav {
             margin-bottom: 20px;
         }
+
         .nav a {
             display: inline-block;
             margin-right: 10px;
-            padding: 10px 14px;
+            padding: 12px 16px;
             text-decoration: none;
-            border-radius: 10px;
-            background: #2563eb;
-            color: white;
-        }
-        .nav a.logout {
-            background: #dc2626;
-        }
-        .card {
-            background: white;
-            padding: 20px;
             border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            background: linear-gradient(135deg, #c084fc, #f472b6);
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 6px 15px rgba(244, 114, 182, 0.18);
         }
+
+        .nav a.logout {
+            background: linear-gradient(135deg, #fb7185, #f43f5e);
+        }
+
+        .card {
+            background: rgba(255,255,255,0.95);
+            padding: 24px;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(216, 180, 254, 0.25);
+            border: 2px solid #f5d0fe;
+        }
+
+        h2 {
+            color: #a21caf;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 16px;
+            overflow: hidden;
+            border-radius: 16px;
         }
+
         th, td {
-            border: 1px solid #cbd5e1;
+            border: 1px solid #f5d0fe;
             padding: 12px;
             text-align: center;
         }
+
         th {
-            background: #2563eb;
+            background: linear-gradient(135deg, #f9a8d4, #d8b4fe);
             color: white;
         }
-        .empty {
-            color: #64748b;
-            text-align: center;
-            margin-top: 10px;
+
+        td {
+            background: #fff;
         }
+
         .success {
-            background: #dcfce7;
-            color: #166534;
-            padding: 10px;
-            border-radius: 10px;
+            background: #f3e8ff;
+            color: #7e22ce;
+            padding: 12px;
+            border-radius: 16px;
             margin-bottom: 16px;
+            border: 1px solid #d8b4fe;
         }
+
         .footer-note {
             margin-top: 18px;
             font-size: 14px;
-            color: #475569;
+            color: #7e22ce;
         }
     </style>
 </head>
@@ -89,14 +116,14 @@
 
 <div class="container">
     <div class="nav">
-        <a th:href="@{/form}">Input Data Mahasiswa</a>
+        <a th:href="@{/form}">+ Input Data Mahasiswa</a>
         <a th:href="@{/logout}" class="logout">Logout</a>
     </div>
 
     <div th:if="${success}" class="success" th:text="${success}"></div>
 
     <div class="card">
-        <h2>Data Mahasiswa</h2>
+        <h2>Data Mahasiswa 🌸</h2>
 
         <table>
             <thead>
@@ -109,7 +136,7 @@
             </thead>
             <tbody>
             <tr th:if="${#lists.isEmpty(dataMahasiswa)}">
-                <td colspan="4">Belum ada data</td>
+                <td colspan="4">Belum ada data 💕</td>
             </tr>
             <tr th:each="item, stat : ${dataMahasiswa}">
                 <td th:text="${stat.count}"></td>
@@ -121,7 +148,7 @@
         </table>
 
         <div class="footer-note">
-            Data bersifat sementara dan tidak disimpan ke database.
+            Data mahasiswa sudah tersimpan ke database MySQL Workbench yaa ✨
         </div>
     </div>
 </div>
